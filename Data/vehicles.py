@@ -13,7 +13,7 @@ class Models(Enum):
 class Vehicles:
 	def __init__(self):
 		self.allVehicles = []
-		self.allVehiclesName = ["J1", "992", "E3", "MacanNF"]
+		self.allVehiclesName = ["J1", "992", "E3", "Macan"]
 		self.countAllVehicles = len(self.allVehiclesName)
 
 		self.loadAllVehicles()
