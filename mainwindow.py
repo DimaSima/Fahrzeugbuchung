@@ -44,10 +44,12 @@ class Window(QWidget):
         WindowLayout=QVBoxLayout()
         WindowLayout.addWidget(self.maintext)
         WindowLayout.addWidget(self.StackedWidget)
+
         btnLayout = QHBoxLayout()
         btnLayout.addWidget(self.goBackBtn)
         btnLayout.addStretch(1)
         btnLayout.addWidget(self.exitBtn)
+
         WindowLayout.addLayout(btnLayout)
 
         self.setLayout(WindowLayout)
@@ -64,9 +66,6 @@ class CalendarWindow(QWidget):
         
         # Initialize tab screen
         self.tabs = QTabWidget()
-        self.tab1 = QWidget()
-        self.tab2 = QWidget()
-        # self.tabs.resize(150,200)
         
         # Add tabs
         self.createVehiclesTab()
@@ -79,8 +78,7 @@ class CalendarWindow(QWidget):
         all_vehicles = Vehicles().allVehiclesName
 
         for v in all_vehicles:
-            #v_tab = QWidget()
-            v_tab = CustomizeTabWidget()
+            v_tab = CustomizeTabWidget(v)
             self.tabs.addTab(v_tab, v)
 
 
