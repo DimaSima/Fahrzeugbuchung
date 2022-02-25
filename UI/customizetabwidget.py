@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QVBoxLayout,QLabel,QWidget, QHBoxLayout, QCalendarWi
 from PyQt5.QtCore import Qt, QDate, QSize
 from PyQt5.QtGui import QFont
 
-
+from UI.vehiclepopup import VehiclePopUp
 
 class CustomizeTabWidget(QWidget):
 	def __init__(self, vehicle):
@@ -14,7 +14,7 @@ class CustomizeTabWidget(QWidget):
 		self.calendar.showToday()
 		self.calendar.setMinimumDate(QDate.addDays(QDate.currentDate(),-7))
 		self.calendar.setMaximumDate(QDate.addDays(QDate.currentDate(),+7))
-		self.calendar.activated.connect(lambda: print("hello"))		# double click event
+		self.calendar.activated.connect(self.openVehiclePopUp)		# double click event
 		self.calendar.setNavigationBarVisible(False)
 
 		self.vehicle = vehicle
@@ -29,6 +29,11 @@ class CustomizeTabWidget(QWidget):
 		vbox.addWidget(self.label)
 
 		self.setLayout(vbox)
+
+
+	def openVehiclePopUp(self):
+		self.vPopUp = VehiclePopUp(self.vehicle)
+		self.vPopUp.show()
 
 	def calendar_date(self):
 		dateselected = self.calendar.selectedDate()
