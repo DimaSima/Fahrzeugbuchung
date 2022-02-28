@@ -21,7 +21,6 @@ class CustomizePushButton(QWidget):
 		btnLayout.addWidget(self.btn)
 
 		self.setLayout(btnLayout)
-		self.show()
 
 
 	def closeApplication(self):
