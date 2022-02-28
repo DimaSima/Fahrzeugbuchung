@@ -17,7 +17,6 @@ class Vehicles:
 		self.countAllVehicles = len(self.allVehiclesName)
 
 		self.loadAllVehicles()
-		self.getSpecificVehicle("J1")
 
 
 
@@ -28,9 +27,8 @@ class Vehicles:
 
 
 	def getAllVehicles(self):
-		"""Gibt eine Liste von allen Vehicle Objekten zurück"""
 		return self.allVehicles
 
-	def getSpecificVehicle(self,name):
-		return list(filter(lambda x: x == name, self.allVehiclesName))
+	#def getSpecificVehicle(self,name):
+	#	return list(filter(lambda x: x == name, for v in self.allVehicles.getName())
 
