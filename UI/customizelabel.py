@@ -21,4 +21,4 @@ class CustomizeLabel(QWidget):
         labelLayout.addWidget(label)
 
         self.setLayout(labelLayout)
-        self.show()
+        #self.show()
