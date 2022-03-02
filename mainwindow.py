@@ -53,7 +53,6 @@ class Window(QWidget):
         WindowLayout.addLayout(btnLayout)
 
         self.setLayout(WindowLayout)
-        self.show()
 
 
 
@@ -66,6 +65,7 @@ class CalendarWindow(QWidget):
         
         # Initialize tab screen
         self.tabs = QTabWidget()
+        self.tabs.setFont(QFont("Arial", 10, QFont.Bold))
         
         # Add tabs
         self.createVehiclesTab()
@@ -75,11 +75,11 @@ class CalendarWindow(QWidget):
 
 
     def createVehiclesTab(self):
-        all_vehicles = Vehicles().allVehiclesName
+        all_vehicles = Vehicles().getAllVehicles()
 
         for v in all_vehicles:
             v_tab = CustomizeTabWidget(v)
-            self.tabs.addTab(v_tab, v)
+            self.tabs.addTab(v_tab, v.getModel())
 
 
 
