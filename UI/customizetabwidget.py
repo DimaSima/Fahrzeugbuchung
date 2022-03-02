@@ -1,3 +1,5 @@
+""" Calendar Module"""
+
 from PyQt5.QtWidgets import QVBoxLayout,QLabel,QWidget, QHBoxLayout, QCalendarWidget, QToolButton
 from PyQt5.QtCore import Qt, QDate, QSize
 from PyQt5.QtGui import QFont
@@ -32,14 +34,17 @@ class CustomizeTabWidget(QWidget):
 
 
 	def openVehiclePopUp(self):
-		self.vPopUp = VehiclePopUp(self.vehicle)
+		dateselected = self.calendar.selectedDate()
+		date_in_string = str(dateselected.toPyDate())
+
+		self.vPopUp = VehiclePopUp(self.vehicle, date_in_string)
 		self.vPopUp.show()
 
 	def calendar_date(self):
 		dateselected = self.calendar.selectedDate()
 		date_in_string = str(dateselected.toPyDate())
 
-		self.label.setText("Date Is : " + date_in_string)
+		self.label.setText("Datum : " + date_in_string)
 
 
 	def setNavigationBarSize(self,width,height):
