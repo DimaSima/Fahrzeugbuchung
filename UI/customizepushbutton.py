@@ -13,7 +13,7 @@ class CustomizePushButton(QWidget):
 
 	def initUI(self):
 		self.btn = QPushButton(self.text,self)
-		self.btn.setFont(QFont("Arial", 14, QFont.Bold))
+		self.btn.setFont(QFont("Arial", 10, QFont.Bold))
 		self.btn.setStyleSheet("QPushButton {background-color:rgb(51,65,82); color:white;}")
 		self.btn.setMaximumWidth(200)
 
