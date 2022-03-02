@@ -14,8 +14,11 @@ class VehiclePopUp(QWidget):
 		""" Popup values"""
 		self.x=100
 		self.y=100
-		self.width=500
-		self.height=500
+		self.width=700
+		self.height=700
+		self.LINESIZE = 200
+		self.BUTTONSIZE = 150
+
 		self.setGeometry(self.x,self.y,self.width,self.height)
 		self.setMinimumSize(self.width, self.height)
 		self.setWindowTitle('Fahrzeugbuchung für das Fahrzeug: ' + self.vehicle.getModel())
@@ -26,12 +29,38 @@ class VehiclePopUp(QWidget):
 		WindowLayout.addWidget(self.label)
 		WindowLayout.addStretch(1)
 
-		firstCol = self.createNewColumn("VIN: ", vehicle.getVin(), "Neue Vin einfügen", "Vin speichern")
+		# VIN Column
+		vinCol = QHBoxLayout()
+		vinLabel = QLabel("VIN: "+str(vehicle.getVin()))
+		vinLine = QLineEdit(self)
+		vinLine.setPlaceholderText("Neue Vin einfügen")
+		vinLine.setMaximumWidth(self.LINESIZE)
+		vinBtn = QPushButton("Vin speichern")
+		vinBtn.setMaximumWidth(self.BUTTONSIZE)
+		vinBtn.clicked.connect(lambda: vinLabel.setText("VIN: "+vinLine.text()))
+		vinCol.addWidget(vinLabel)
+		vinCol.addWidget(vinLine)
+		vinCol.addWidget(vinBtn)
 
-		WindowLayout.addLayout(firstCol)
+		# MIB SW Column
+		mib_sw_Col = QHBoxLayout()
+		mib_sw_Label = QLabel("MIB SW: "+str(vehicle.getMIBSW()))
+		mib_sw_line = QLineEdit(self)
+		mib_sw_line.setPlaceholderText("Neue MIB SW einfügen")
+		mib_sw_line.setMaximumWidth(self.LINESIZE)
+		mib_sw_Btn = QPushButton("MIB SW speichern")
+		mib_sw_Btn.setMaximumWidth(self.BUTTONSIZE)
+		mib_sw_Btn.clicked.connect(lambda: mib_sw_Label.setText("MIB SW: "+mib_sw_line.text()))
+		mib_sw_Col.addWidget(mib_sw_Label)
+		mib_sw_Col.addWidget(mib_sw_line)
+		mib_sw_Col.addWidget(mib_sw_Btn)
+
+		# Add all Layouts
+		WindowLayout.addLayout(vinCol)
+		WindowLayout.addLayout(mib_sw_Col)
+
 
 		self.setLayout(WindowLayout)
-
 
 
 	def createNewColumn(self,labelText, labelValue, placeHolderText, btnText):
@@ -44,5 +73,7 @@ class VehiclePopUp(QWidget):
 		firstCol.addWidget(line)
 		firstCol.addWidget(vinBtn)
 
+
 		return firstCol
+
 

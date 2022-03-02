@@ -25,3 +25,4 @@ class CustomizePushButton(QWidget):
 
 	def closeApplication(self):
 		self.btn.clicked.connect(QApplication.instance().quit)
+

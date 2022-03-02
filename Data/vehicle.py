@@ -17,4 +17,7 @@ class Vehicle:
 
 	def getKennzeichen(self):
 		return self.kennzeichen
+
+	def getMIBSW(self):
+		return self.mib_sw
 		
